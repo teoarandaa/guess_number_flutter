@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guess_the_number/app_colors.dart';
 import 'package:flutter_guess_the_number/background_view.dart';
 import 'package:flutter_guess_the_number/game.dart';
+import 'package:flutter_guess_the_number/marks_view.dart';
 import 'package:flutter_guess_the_number/slider_widget.dart';
 import 'package:flutter_guess_the_number/test_view.dart';
 import 'package:flutter_guess_the_number/view_model.dart';
@@ -80,6 +81,25 @@ class _ContentViewState extends State<ContentView> {
               ).textTheme.titleLarge?.copyWith(color: Colors.white),
             ),
           ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MarksView()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(21),
+              ),
+            ),
+            child: Text(
+              "TOP SCORES",
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
@@ -109,6 +129,16 @@ class _ContentViewState extends State<ContentView> {
                   Navigator.pop(context);
                 },
                 child: const Text("OK"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    appState.saveScore();
+                    appState.restartGame();
+                  });
+                  Navigator.pop(context);
+                },
+                child: const Text("Save & New Game"),
               ),
             ],
           ),
