@@ -42,7 +42,7 @@ class _ContentViewState extends State<ContentView> {
   final double _MAX_VALUE = 100.0;
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<ViewModel>(); 
+    var appState = context.watch<ViewModel>();
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +97,9 @@ class _ContentViewState extends State<ContentView> {
             ),
             child: Text(
               "TOP SCORES",
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(color: Colors.white),
             ),
           ),
         ],
